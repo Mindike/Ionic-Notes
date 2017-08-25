@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {NotesService} from "../../services/notes.service";
 
 /**
  * Generated class for the DetailPage page.
@@ -14,8 +15,11 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'detail.html',
 })
 export class DetailPage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  note = {id:null,title:null,description:null};
+  id = null;
+  constructor(public navCtrl: NavController, public navParams: NavParams, public notesService : NotesService) {
+    this.id = this.navParams.get('id');
+    this.note = notesService.getNote(this.id);
   }
 
   ionViewDidLoad() {

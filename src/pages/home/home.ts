@@ -13,8 +13,8 @@ export class HomePage {
   constructor(public navCtrl: NavController, public notesService : NotesService ) {
     this.notes = notesService.getNotes();
   }
-  public goToDetail(){
-    this.navCtrl.push(DetailPage)
+  public goToDetail(id){
+    this.navCtrl.push(DetailPage, {id:id})
   }
 
 }
