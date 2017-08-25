@@ -19,11 +19,32 @@ export class DetailPage {
   id = null;
   constructor(public navCtrl: NavController, public navParams: NavParams, public notesService : NotesService) {
     this.id = this.navParams.get('id');
-    this.note = notesService.getNote(this.id);
+    if (this.id != 0){
+      this.note = notesService.getNote(this.id);
+    }
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad DetailPage');
+  }
+
+  addNote(){
+    if (this.id != 0){
+      //Editando
+      this.notesService.editNote(this.note);
+      alert('Cambios guardados!');
+    }else{
+      this.note.id = Date.now();
+      this.notesService.createNote(this.note);
+      alert('Nota creada!');
+    }
+    this.navCtrl.pop();
+  }
+
+  deleteNote(){
+    this.notesService.deleteNote(this.note);
+    alert('Nota eliminada!');
+    this.navCtrl.pop();
   }
 
 }

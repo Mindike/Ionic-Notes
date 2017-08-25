@@ -26,5 +26,8 @@
       <ion-textarea [(ngModel)]="note.description"></ion-textarea>
     </ion-item>
   </ion-list>
-  <button ion-button block>Crear</button>
+  <div padding>
+    <button ion-button block (click)="addNote()" >Guardar</button>
+    <button *ngIf="id != 0" ion-button block (click)="deleteNote()" color="danger">Eliminar</button>
+  </div>
 </ion-content>

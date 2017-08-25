@@ -17,4 +17,8 @@ export class HomePage {
     this.navCtrl.push(DetailPage, {id:id})
   }
 
+  public createNote(){
+    this.navCtrl.push(DetailPage, {id:0})
+  }
+
 }
